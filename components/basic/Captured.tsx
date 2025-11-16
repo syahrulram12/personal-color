@@ -30,6 +30,7 @@ const Captured = () => {
     return () => {
       if (stream) {
         stream.getTracks().forEach((t) => t.stop());
+        stream.getVideoTracks().forEach((t) => t.stop());
       }
       if (videoEl) videoEl.srcObject = null;
     };
