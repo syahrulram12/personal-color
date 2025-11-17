@@ -1,6 +1,6 @@
 const Page = () => {
   return (
-    <div>
+    <div className="bg-main min-h-screen flex justify-center items-center">
       <h1>cam</h1>
     </div>
   );
