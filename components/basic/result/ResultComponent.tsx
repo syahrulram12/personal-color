@@ -1,11 +1,12 @@
-import ClosestPartner from "./ClosestPartner";
-import ColorPalette from "./ColorPalette";
-import HeaderLeft from "./HeaderLeft";
+import Cushion from "./center/Cushion";
+import ClosestPartner from "./left/ClosestPartner";
+import ColorPalette from "./left/ColorPalette";
+import HeaderLeft from "./left/HeaderLeft";
 
 const ResultComponent = () => {
 
   return (
-    <div className="bg-main flex justify-between min-h-screen p-3">
+    <div className="bg-main flex flex-wrap-reverse justify-between min-h-screen p-3">
 
       {/* kiri */}
       <div className="flex flex-col">
@@ -26,8 +27,8 @@ const ResultComponent = () => {
       </div>
 
       {/* tengah */}
-      <div>
-        <h1>TENGAH</h1>
+      <div className="pt-[30vh] md:pt-0 md:z-50">
+        <Cushion/>
       </div>
       
       

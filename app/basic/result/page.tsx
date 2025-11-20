@@ -1,4 +1,4 @@
-import ContactForm from "@/components/basic/result/ContactForm";
+import ContactForm from "@/components/basic/result/left/ContactForm";
 import Heading from "@/components/ui/Heading";
 
 const Page = () => {
