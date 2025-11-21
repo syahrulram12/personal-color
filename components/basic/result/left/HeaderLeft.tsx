@@ -28,7 +28,7 @@ const HeaderLeft = () => {
         <div className="fixed top-0 left-0 z-50 w-full">
             <div
                 className="
-                relative bg-main md:w-[40vw] h-[25vh] p-8 
+                relative bg-main md:w-[35vw] h-[25vh] p-8 
                 flex items-center justify-between rounded-br-4xl overflow-visible flex-wrap
                 flex-col md:flex-row
                 "

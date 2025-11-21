@@ -17,17 +17,17 @@ const ResultComponent = () => {
         {/* spacer */}
         <div className="pt-[42vh] md:pt-[42vh]"></div>
 
-        <div className="md:w-[40vw] mb-3">
+        <div className="md:w-[35vw] mb-3">
           <ColorPalette />
         </div>
 
-        <div className="md:w-[40vw] mb-4">
+        <div className="md:w-[35vw] mb-4">
           <ClosestPartner />
         </div>
       </div>
 
       {/* tengah */}
-      <div className="pt-[30vh] md:pt-0 md:z-50">
+      <div className="pt-[30vh] w-full md:pt-0 md:z-50">
         <Cushion/>
       </div>
       
