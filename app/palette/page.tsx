@@ -19,6 +19,7 @@ const Page = () => {
         nextTone="/undertone-1"
         description="Please identify with natural bright light"
         tone="SKIN TONE"
+        mode="skintone"
       />
     </div>
   );

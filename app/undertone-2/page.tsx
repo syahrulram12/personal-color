@@ -20,6 +20,7 @@ const Page = () => {
           tone="UNDER TONE" 
           description="Pilih warna yang membuat kulit Anda lebih cerah dan melembutkan warna di sekitar kantung mata & garis senyum Anda"
           judulTone="Check your undertone 2/3"
+          mode="undertone"
         />
       </div>
     </div>

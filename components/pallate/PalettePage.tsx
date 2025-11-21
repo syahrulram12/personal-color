@@ -1,6 +1,7 @@
 "use client";
 
 import CardPreview from "@/components/ui/CardPreview";
+import { appendUnderTone, saveSkinTone } from "@/lib/cookies";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -10,6 +11,8 @@ interface PalettePageProps {
   description?: string;
   tone?: string;
   judulTone?: string;
+  mode: "undertone" | "skintone";
+  onNext?: (color: string) => void;
 }
 
 const getColorFromFilename = (path: string) => {
@@ -23,6 +26,8 @@ const PalettePage = ({
   description,
   tone,
   judulTone,
+  mode,
+  onNext,
 }: PalettePageProps) => {
   const [capturedImg] = useState(() => {
     if (typeof window !== "undefined") {
@@ -102,11 +107,23 @@ const PalettePage = ({
           })}
         </div>
 
-        <Link href={nextTone} className="w-full mt-4 ">
+        <Link
+          href={nextTone}
+          onClick={() => {
+            const color = getColorFromFilename(selectedPalette);
+            mode === "skintone"
+              ? saveSkinTone(color)
+              : appendUnderTone(color);
+
+            if (onNext) onNext(color);
+          }}
+          className="w-full mt-4 "
+        >
           <button className="mt-8 cursor-pointer w-full bg-[#7C2C2C] text-white py-3 rounded-full font-bold shadow-md hover:opacity-90 transition">
             Next
           </button>
         </Link>
+
       </div>
 
       {/* card preview dekstop */}
