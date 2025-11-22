@@ -1,6 +1,4 @@
-import PalettePage from "@/components/pallate/PalettePage";
-import ButtonBack from "@/components/ui/ButtonBack";
-import ButtonNext from "@/components/ui/ButtonNext";
+import SelectTone from "@/components/SelectTone/SelectToneComponent";
 
 const paletteImages = [
   "/palette/face-bg-F5C9A6.png",
@@ -10,18 +8,15 @@ const paletteImages = [
 
 const Page = () => {
   return (
-    <div className="bg-main min-h-screen flex justify-center items-center pt-16 pb-10 px-4">
-      <ButtonBack href="/hint" label="BACK" />
-      <ButtonNext href="/undertone-1" label="NEXT" />
-
-      <PalettePage
-        paletteImages={paletteImages}
-        nextTone="/undertone-1"
-        description="Please identify with natural bright light"
-        tone="SKIN TONE"
-        mode="skintone"
-      />
-    </div>
+    <SelectTone
+      tone="SKIN TONE"
+      mode="skintone"
+      paletteImages={paletteImages}
+      urlBack="/hint"
+      urlNext="/undertone-1"
+      judulTone="Check your undertone 1/3"
+      description="Please identify with natural bright light"
+    />
   );
 };
 

@@ -3,7 +3,7 @@
 import CardPreview from "@/components/ui/CardPreview";
 import { appendUnderTone, saveSkinTone } from "@/lib/cookies";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface PalettePageProps {
   paletteImages: string[];
@@ -40,6 +40,15 @@ const PalettePage = ({
     paletteImages?.[0] ?? ""
   );
 
+  useEffect(() => {
+    if (paletteImages.length > 0) {
+      const defaultImg = paletteImages[0];
+      const defaultColor = getColorFromFilename(defaultImg);
+      if (onNext) onNext(defaultColor);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <div
       className="flex flex-col-reverse lg:flex-row justify-center items-center px-4 gap-10 lg:gap-14 
@@ -67,7 +76,12 @@ const PalettePage = ({
               return (
                 <button
                   key={idx}
-                  onClick={() => setSelectedPalette(img)}
+                  onClick={() => {
+                    setSelectedPalette(img);
+                    const color = getColorFromFilename(img);
+                    // console.log(color);
+                    if (onNext) onNext(color); // <<< WAJIB
+                  }}
                   className="rounded-full border-[3px] transition-all w-12 h-12"
                   style={{
                     backgroundColor: color,
@@ -111,9 +125,8 @@ const PalettePage = ({
           href={nextTone}
           onClick={() => {
             const color = getColorFromFilename(selectedPalette);
-            mode === "skintone"
-              ? saveSkinTone(color)
-              : appendUnderTone(color);
+            // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+            mode === "skintone" ? saveSkinTone(color) : appendUnderTone(color);
 
             if (onNext) onNext(color);
           }}
@@ -123,7 +136,6 @@ const PalettePage = ({
             Next
           </button>
         </Link>
-
       </div>
 
       {/* card preview dekstop */}
@@ -136,7 +148,9 @@ const PalettePage = ({
 
       <div className="mt-10">
         <h1 className="text-[#7D4754]  font-bold">{judulTone}</h1>
-        <p className="text-[#7D4754] font-semibold hidden md:block">{description}</p>
+        <p className="text-[#7D4754] font-semibold hidden md:block">
+          {description}
+        </p>
       </div>
     </div>
   );
