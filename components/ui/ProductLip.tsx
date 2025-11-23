@@ -1,59 +1,75 @@
-'use client'
+"use client";
 
-import { ChevronLeft, ChevronRight } from "lucide-react"
-import Image, { StaticImageData } from "next/image"
-import { useState } from "react"
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import Image, { StaticImageData } from "next/image";
+import { useState } from "react";
 
 interface LipImage {
-    src: StaticImageData
-    name: string
+  src: StaticImageData;
 }
 
 const ProductLip = ({ LipImages }: { LipImages: LipImage[] }) => {
-    const [index, setIndex] = useState(0)
+  const ITEMS_PER_SLIDE = 3;
+  const totalSlides = Math.ceil(LipImages.length / ITEMS_PER_SLIDE);
 
-    const prev = () => {
-        setIndex((prev) => (prev === 0 ? LipImages.length - 1 : prev - 1))
-    }
+  const [slideIndex, setSlideIndex] = useState(0);
 
-    const next = () => {
-        setIndex((prev) => (prev === LipImages.length - 1 ? 0 : prev + 1))
-    }
+  const prev = () => {
+    setSlideIndex((prev) => (prev === 0 ? totalSlides - 1 : prev - 1));
+  };
 
-    const current = LipImages[index]
+  const next = () => {
+    setSlideIndex((prev) => (prev === totalSlides - 1 ? 0 : prev + 1));
+  };
 
-    return (
-        <div className="flex justify-center items-center gap-4">
-            <button
-                onClick={prev}
-                className="bg-white cursor-pointer shadow-md w-10 h-10 rounded-full flex items-center justify-center mx-4 hover:scale-105 transition"
-            >
-                <ChevronLeft className="text-rose-300" />
-            </button>
+  const start = slideIndex * ITEMS_PER_SLIDE;
+  const currentItems = LipImages.slice(start, start + ITEMS_PER_SLIDE);
 
-            <div className="bg-component w-[10vw] p-4 rounded-lg shadow-lg flex flex-col gap-3">
-                <div className="border-[#7D4754] p-2 border-2 rounded-lg flex flex-col items-center gap-2">
-                    <h1 className="text-berl font-bold text-center">{current.name}</h1>
-                </div>
+  return (
+    <div className="relative bg-white rounded-2xl p-6 shadow-lg w-full max-w-3xl mx-auto">
+      {/* Title */}
+      <h1 className="text-center text-[#7D4754] font-bold text-xl mb-6">
+        B ERL Lip Matte
+      </h1>
 
-                <div className="relative w-full h-[20vh] rounded-lg overflow-hidden">
-                    <Image
-                        src={current.src}
-                        alt={current.name}
-                        fill
-                        className="object-cover w-full h-full"
-                    />
-                </div>
+      {/* LEFT BUTTON */}
+      <button
+        onClick={prev}
+        className="absolute left-2 top-1/2 -translate-y-1/2 bg-white shadow-md w-8 h-8 rounded-full flex items-center justify-center hover:scale-110 transition"
+      >
+        <ChevronLeft className="text-rose-400" />
+      </button>
+
+      {/* SLIDE CONTENT */}
+      <div className="flex gap-4 justify-center">
+        {currentItems.map((item, idx) => (
+          <div
+            key={idx}
+            className="bg-white border border-[#E6CFD4] rounded-xl p-2 w-32 shadow-sm text-center"
+          >
+            <div className="relative">
+              <div className="relative w-full h-24 rounded-lg overflow-hidden">
+                <Image
+                  src={item.src}
+                  alt="produk lip"
+                  fill
+                  className="object-cover"
+                />
+              </div>
             </div>
+          </div>
+        ))}
+      </div>
 
-            <button
-                onClick={next}
-                className="bg-white cursor-pointer shadow-md w-10 h-10 rounded-full flex items-center justify-center mx-4 hover:scale-105 transition"
-            >
-                <ChevronRight className="text-rose-300" />
-            </button>
-        </div>
-    )
-}
+      {/* RIGHT BUTTON */}
+      <button
+        onClick={next}
+        className="absolute right-2 top-1/2 -translate-y-1/2 bg-white shadow-md w-8 h-8 rounded-full flex items-center justify-center hover:scale-110 transition"
+      >
+        <ChevronRight className="text-rose-400" />
+      </button>
+    </div>
+  );
+};
 
-export default ProductLip
+export default ProductLip;
