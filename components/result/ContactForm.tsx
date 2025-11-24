@@ -14,7 +14,12 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
-import { saveToCookies } from "@/lib/utils/cookies";
+import {
+  getFromCookies,
+  getSkinTone,
+  getUnderTone,
+  saveToCookies,
+} from "@/lib/utils/cookies";
 
 const ContactForm = () => {
   const router = useRouter();
@@ -28,12 +33,48 @@ const ContactForm = () => {
     },
   });
 
-  const onSubmit = (data: ContactSchemaType) => {
+  const onSubmit = async (data: ContactSchemaType) => {
     saveToCookies("contact-data", data);
 
-    router.push("/result-template");
+    const depth_levels = getSkinTone();
+    const undertone_color = getUnderTone();
+    const contact = getFromCookies<ContactSchemaType>("contact-data");
 
-    console.log("Form submit:", data);
+    const lat = localStorage.getItem("user_lat") || "";
+    const long = localStorage.getItem("user_long") || "";
+
+    const payload = {
+      depth_levels: depth_levels || "",
+      undertone_color: undertone_color || [],
+      data: {
+        name: contact?.name || "",
+        email: contact?.email || "",
+        phone: contact?.nohp || "",
+        lat,
+        long,
+      },
+    };
+
+    try {
+      const res = await fetch("/api/personalcolor", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const result = await res.json();
+      console.log("Response API:", result);
+
+      if (result.success && result.trx) {
+        router.push(`/result/${result.trx}`);
+      } else {
+        console.error("Response tidak valid:", result);
+      }
+    } catch (err) {
+      console.error("FETCH ERROR:", err);
+    }
   };
 
   return (

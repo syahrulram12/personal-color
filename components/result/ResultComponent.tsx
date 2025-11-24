@@ -4,10 +4,12 @@ import HeaderLeft from "./HeaderLeft";
 import ProductLip from "../ProductLip";
 import ClosestPartner from "./ClosestPartner";
 
-const ResultComponent = () => {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const ResultComponent = ({ trx }: { trx: string }) => {
   return (
     <div className="bg-result min-h-screen grid md:grid-cols-2 p-3">
       {/* kiri */}
+      {/* <h1>ini halaman untuk {trx}</h1> */}
       <div className="flex flex-col items-center">
         <div className="w-[50vw]">
           <HeaderLeft />

@@ -17,7 +17,7 @@ const Page = async () => {
       urlBack="/hint"
       urlNext="/undertone-1"
       judulTone="Check your undertone 1/3"
-      description="Please identify with natural bright light"
+      description="Mohon identifikasikan dengan pencahayaan yang terang"
     />
   );
 };

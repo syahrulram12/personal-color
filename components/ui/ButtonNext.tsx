@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { appendUnderTone, saveSkinTone } from "@/lib/cookies";
+import { appendUnderTone, saveSkinTone } from "@/lib/utils/cookies";
 
 type ButtonNextProps = {
   href?: string;

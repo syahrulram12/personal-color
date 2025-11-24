@@ -1,7 +1,7 @@
 "use client";
 
 import CardPreview from "@/components/ui/CardPreview";
-import { appendUnderTone, saveSkinTone } from "@/lib/cookies";
+import { appendUnderTone, saveSkinTone } from "@/lib/utils/cookies";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -147,7 +147,11 @@ const PalettePage = ({
       </div>
 
       <div className="mt-10">
-        <h1 className="text-[#7D4754]  font-bold">{judulTone}</h1>
+        {mode === "undertone" && (
+          <>
+            <h1 className="text-[#7D4754]  font-bold">{judulTone}</h1>
+          </>
+        )}
         <p className="text-[#7D4754] font-semibold hidden md:block">
           {description}
         </p>
