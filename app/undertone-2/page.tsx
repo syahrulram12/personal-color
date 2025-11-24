@@ -1,11 +1,13 @@
 import Undertone from "@/components/SelectTone/SelectToneComponent";
+import { getTone } from "@/lib/selectTone/getTone";
 
-const paletteImages = [
-  "/undertone-2/face-bg-C5C5C1.png",
-  "/undertone-2/face-bg-C49308.png",
-];
+export const dynamic = "force-dynamic";
 
-const Page = () => {
+const Page = async () => {
+  const endpoint = "undertone2";
+  const depthLevel = await getTone({ endpoint });
+
+  const paletteImages = depthLevel.map((item) => item.image);
   return (
     <Undertone
       tone="UNDERTONE"

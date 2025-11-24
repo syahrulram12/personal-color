@@ -1,12 +1,14 @@
 import SelectTone from "@/components/SelectTone/SelectToneComponent";
+import { getTone } from "@/lib/selectTone/getTone";
 
-const paletteImages = [
-  "/palette/face-bg-F5C9A6.png",
-  "/palette/face-bg-e2cdb2.png",
-  "/palette/face-bg-dfb48a.png",
-];
+export const dynamic = "force-dynamic";
 
-const Page = () => {
+const Page = async () => {
+  const endpoint = "depth_level";
+  const depthLevel = await getTone({ endpoint });
+
+  const paletteImages = depthLevel.map((item) => item.image);
+
   return (
     <SelectTone
       tone="SKIN TONE"

@@ -2,6 +2,7 @@ import Cushion from "./Cushion";
 import ColorPalette from "./ColorPalette";
 import HeaderLeft from "./HeaderLeft";
 import ProductLip from "../ProductLip";
+import ClosestPartner from "./ClosestPartner";
 
 const ResultComponent = () => {
   return (
@@ -28,6 +29,10 @@ const ResultComponent = () => {
         <ProductLip />
         <ProductLip />
         <ProductLip />
+      </div>
+
+      <div>
+        <ClosestPartner />
       </div>
     </div>
   );
