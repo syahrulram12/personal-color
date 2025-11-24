@@ -10,32 +10,11 @@ import {
 
 import Image from "next/image";
 
-import LipMatte1 from "@/public/produk/LM/01 Nude Brown.png";
-import LipMatte2 from "@/public/produk/LM/02 Nude Pink.png";
-import LipMatte3 from "@/public/produk/LM/03 Soft Pink.png";
-import LipMatte4 from "@/public/produk/LM/04 Red Chill.png";
-import LipMatte5 from "@/public/produk/LM/05 Nude Purple.png";
-import LipMatte6 from "@/public/produk/LM/06 Mochacinno.png";
-
-const LipImages = [
-  { src: LipMatte1 },
-  { src: LipMatte2 },
-  { src: LipMatte3 },
-  { src: LipMatte4 },
-  { src: LipMatte5 },
-  { src: LipMatte6 },
-];
-
-const CarouselLips = () => {
+const CarouselLips = ({ images }: { images: { src: string }[] }) => {
   return (
-    <Carousel
-      opts={{
-        align: "start",
-      }}
-      className="w-full"
-    >
+    <Carousel opts={{ align: "start" }} className="w-full">
       <CarouselContent>
-        {LipImages.map((item, index) => (
+        {images.map((item, index) => (
           <CarouselItem
             key={index}
             className="basis-1/2 sm:basis-1/2 lg:basis-1/3"
@@ -45,6 +24,8 @@ const CarouselLips = () => {
                 <Image
                   src={item.src}
                   alt=""
+                  width={300}
+                  height={300}
                   className="object-contain w-full h-full"
                 />
               </div>
@@ -52,6 +33,7 @@ const CarouselLips = () => {
           </CarouselItem>
         ))}
       </CarouselContent>
+
       <CarouselPrevious />
       <CarouselNext />
     </Carousel>

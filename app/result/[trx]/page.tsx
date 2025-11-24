@@ -1,13 +1,15 @@
 import ResultComponent from "@/components/result/ResultComponent";
 
 interface PageProps {
-  params: {
-    id: string;
-  };
+  params: Promise<{
+    trx: string;
+  }>;
 }
 
-const Page = ({ params }: PageProps) => {
-  return <ResultComponent trx={params.id} />;
+const Page = async ({ params }: PageProps) => {
+  const { trx } = await params;
+
+  return <ResultComponent trx={trx} />;
 };
 
 export default Page;

@@ -68,6 +68,8 @@ const ContactForm = () => {
       console.log("Response API:", result);
 
       if (result.success && result.trx) {
+        console.log("TRX:", result.trx);
+
         router.push(`/result/${result.trx}`);
       } else {
         console.error("Response tidak valid:", result);
