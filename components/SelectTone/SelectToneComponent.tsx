@@ -12,6 +12,7 @@ interface UndertoneProps {
   description: string;
   tone: string;
   judulTone: string;
+  pageIndex: number;
   mode: "undertone" | "skintone";
 }
 
@@ -23,6 +24,7 @@ const SelectTone = ({
   judulTone,
   description,
   mode,
+  pageIndex,
 }: UndertoneProps) => {
   const [selectedColor, setSelectedColor] = useState<string>("");
 
@@ -38,6 +40,7 @@ const SelectTone = ({
 
       <div className="w-[80vw]">
         <PalettePage
+          pageIndex={pageIndex}
           paletteImages={paletteImages}
           nextTone={urlNext}
           tone={tone}

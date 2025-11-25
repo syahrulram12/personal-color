@@ -10,6 +10,7 @@ const Page = async () => {
 
   return (
     <Undertone
+      pageIndex={0}
       tone="UNDERTONE"
       mode="undertone"
       paletteImages={paletteImages}

@@ -10,6 +10,7 @@ const Page = async () => {
   const paletteImages = depthLevel.map((item) => item.image);
   return (
     <Undertone
+      pageIndex={1}
       tone="UNDERTONE"
       mode="undertone"
       paletteImages={paletteImages}

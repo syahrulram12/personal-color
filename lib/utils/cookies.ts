@@ -60,6 +60,29 @@ export const appendUnderTone = (color: string) => {
   return updated;
 };
 
+export const setUnderToneByPage = (color: string, pageIndex: number) => {
+  const raw = Cookies.get(UNDER_TONE_KEY);
+  let current: string[] = [];
+
+  if (raw) {
+    try {
+      current = JSON.parse(raw);
+    } catch {
+      current = [];
+    }
+  }
+
+  // Update atau tambahkan warna sesuai pageIndex
+  current[pageIndex] = color;
+
+  // Hapus trailing undefined atau empty string agar rapi
+  const cleaned = current.filter((c) => c !== undefined && c !== "");
+
+  Cookies.set(UNDER_TONE_KEY, JSON.stringify(cleaned), { expires: 7 });
+
+  return cleaned;
+};
+
 export const getUnderTone = (): string[] => {
   const raw = Cookies.get(UNDER_TONE_KEY);
   if (!raw) return [];

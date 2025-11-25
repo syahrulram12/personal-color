@@ -1,7 +1,11 @@
 "use client";
 
 import CardPreview from "@/components/ui/CardPreview";
-import { appendUnderTone, saveSkinTone } from "@/lib/utils/cookies";
+import {
+  appendUnderTone,
+  saveSkinTone,
+  setUnderToneByPage,
+} from "@/lib/utils/cookies";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -11,6 +15,7 @@ interface PalettePageProps {
   description?: string;
   tone?: string;
   judulTone?: string;
+  pageIndex: number;
   mode: "undertone" | "skintone";
   onNext?: (color: string) => void;
 }
@@ -27,6 +32,7 @@ const PalettePage = ({
   tone,
   judulTone,
   mode,
+  pageIndex,
   onNext,
 }: PalettePageProps) => {
   const [capturedImg] = useState(() => {
@@ -124,9 +130,12 @@ const PalettePage = ({
         <Link
           href={nextTone}
           onClick={() => {
+            // e.preventDefault();
             const color = getColorFromFilename(selectedPalette);
             // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-            mode === "skintone" ? saveSkinTone(color) : appendUnderTone(color);
+            mode === "skintone"
+              ? saveSkinTone(color)
+              : setUnderToneByPage(color, pageIndex);
 
             if (onNext) onNext(color);
           }}
