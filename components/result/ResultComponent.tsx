@@ -3,6 +3,8 @@ import ColorPalette from "./ColorPalette";
 import HeaderLeft from "./HeaderLeft";
 import ProductLip from "../ProductLip";
 import ClosestPartner from "./ClosestPartner";
+import HeaderRight from "./headerRight";
+import { Button } from "../ui/button";
 
 const ResultComponent = async ({ trx }: { trx: string }) => {
   const res = await fetch(
@@ -38,15 +40,13 @@ const ResultComponent = async ({ trx }: { trx: string }) => {
   // console.log("DATA RESULT SERVER:", data);
 
   return (
-    <div className="bg-result min-h-screen ">
-      <div className="grid md:grid-cols-2 p-3">
+    <div className="bg-result min-h-screen pt-10">
+      <div className="grid md:grid-cols-2 pb-2">
         {/* kiri */}
         <div className="flex flex-col items-center">
-          <div className="w-[50vw]">
-            <HeaderLeft />
-          </div>
+          <HeaderLeft />
 
-          <div className="pt-[25vh] md:w-[35vw] mb-3">
+          <div className="pt-5 md:pt-[7vh] md:w-[35vw] mb-3">
             <ColorPalette />
           </div>
 
@@ -59,14 +59,16 @@ const ResultComponent = async ({ trx }: { trx: string }) => {
 
         {/* kanan */}
         <div className="flex flex-col gap-1 items-center">
+          <HeaderRight />
           <ProductLip title="B ERL LIP MATE" products={lipMateList} />
           <ProductLip title="B ERL LIP VELVET" products={lipVelvetList} />
           <ProductLip title="B ERL LIP STAIN" products={lipStainList} />
         </div>
       </div>
 
-      <div className="mt-5 pb-[10vh]">
-        <ClosestPartner />
+      <div className="mt-5 flex gap-3 items-center justify-center py-5">
+        <Button className="berl-btn">Finish</Button>
+        <Button className="berl-btn">Mitra Terdekat</Button>
       </div>
     </div>
   );

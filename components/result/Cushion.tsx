@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { getFromCookies } from "@/lib/utils/cookies";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const Cushion = ({ CushionImage }: { CushionImage: any[] }) => {
@@ -15,6 +16,10 @@ const Cushion = ({ CushionImage }: { CushionImage: any[] }) => {
   const next = () => {
     setIndex((prev) => (prev === CushionImage.length - 1 ? 0 : prev + 1));
   };
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const getColor: any = getFromCookies("selectedColorSkinTone");
+  // console.log(getColor);
 
   const current = CushionImage[index];
 
@@ -30,7 +35,7 @@ const Cushion = ({ CushionImage }: { CushionImage: any[] }) => {
           style={{ borderRadius: "50px 50px 18px 18px" }}
         >
           <div className="rounded-full bg-[#FDBA74] w-20 h-20"></div>
-          <h1 className="text-bold text-berl font-baloo">#FDBA74</h1>
+          <h1 className="text-bold text-berl font-baloo">{getColor.color}</h1>
         </div>
 
         <div className="flex justify-center items-center">

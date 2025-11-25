@@ -21,8 +21,13 @@ import {
   removeCookie,
   saveToCookies,
 } from "@/lib/utils/cookies";
+import { useState } from "react";
+import LoadingModal from "../ui/loadingModal";
 
 const ContactForm = () => {
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+
   const router = useRouter();
 
   const form = useForm<ContactSchemaType>({
@@ -56,12 +61,12 @@ const ContactForm = () => {
       },
     };
 
+    setLoading(true);
+
     try {
       const res = await fetch("/api/personalcolor", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
 
@@ -69,75 +74,82 @@ const ContactForm = () => {
       console.log("Response API:", result);
 
       if (result.success && result.trx) {
-        // console.log("TRX:", result.trx);
+        setSuccess(true);
 
-        removeCookie("selectedColorUnderTone");
-        removeCookie("selectedColorSkinTone");
-
-        router.push(`/result/${result.trx}`);
+        setTimeout(() => {
+          setLoading(false);
+          removeCookie("selectedColorUnderTone");
+          // removeCookie("selectedColorSkinTone");
+          router.push(`/result/${result.trx}`);
+        }, 1500);
       } else {
+        setLoading(false);
         console.error("Response tidak valid:", result);
       }
     } catch (err) {
+      setLoading(false);
       console.error("FETCH ERROR:", err);
     }
   };
 
   return (
-    <div className="p-6 backdrop-blur-xl rounded-xl shadow-md  mt-6">
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
-          <FormField
-            control={form.control}
-            name="name"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Nama</FormLabel>
-                <FormControl>
-                  <Input placeholder="Masukkan nama" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+    <>
+      {loading && <LoadingModal open={loading} success={success} />}
+      <div className="p-6 backdrop-blur-xl rounded-xl shadow-md  mt-6">
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
+            <FormField
+              control={form.control}
+              name="name"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Nama</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Masukkan nama" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
-          <FormField
-            control={form.control}
-            name="email"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Email</FormLabel>
-                <FormControl>
-                  <Input placeholder="email@example.com" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Email</FormLabel>
+                  <FormControl>
+                    <Input placeholder="email@example.com" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
-          <FormField
-            control={form.control}
-            name="nohp"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>No HP</FormLabel>
-                <FormControl>
-                  <Input placeholder="08xxxxxx" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+            <FormField
+              control={form.control}
+              name="nohp"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>No HP</FormLabel>
+                  <FormControl>
+                    <Input placeholder="08xxxxxx" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
-          <Button
-            type="submit"
-            className="w-full berl-btn text-white py-2 rounded-lg hover:bg-blue-700"
-          >
-            Submit
-          </Button>
-        </form>
-      </Form>
-    </div>
+            <Button
+              type="submit"
+              className="w-full berl-btn text-white py-2 rounded-lg hover:bg-blue-700"
+            >
+              Submit
+            </Button>
+          </form>
+        </Form>
+      </div>
+    </>
   );
 };
 
