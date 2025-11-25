@@ -11,6 +11,7 @@ const Page = async () => {
 
   return (
     <SelectTone
+      pageIndex={10}
       tone="SKIN TONE"
       mode="skintone"
       paletteImages={paletteImages}
