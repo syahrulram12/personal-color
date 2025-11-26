@@ -24,8 +24,8 @@ const Cushion = ({ CushionImage }: { CushionImage: any[] }) => {
   const current = CushionImage[index];
 
   return (
-    <div className="">
-      <div className="berl-btn p-4 text-center">
+    <div className="flex flex-col items-center">
+      <div className="berl-btn p-4 w-[60vw] md:w-full text-center">
         <h1 className="text-white font-baloo">Colorfit / Complexion</h1>
       </div>
 

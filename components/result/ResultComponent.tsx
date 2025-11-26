@@ -19,15 +19,15 @@ const ResultComponent = async ({ trx }: { trx: string }) => {
 
   const lipData = dataUndertone;
 
-  const undertone =
-  lipData?.["Lip Mate"]?.[0]?.undertone_result_id ?? null;
-
+  const undertone = lipData?.["Lip Mate"]?.[0]?.undertone_result_id ?? null;
 
   const lipMateList =
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     lipData?.["Lip Mate"]?.map((item: any) => ({
       src: item.imagevarian,
     })) ?? [];
+
+  console.log(lipMateList.length);
 
   const lipVelvetList =
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -63,10 +63,22 @@ const ResultComponent = async ({ trx }: { trx: string }) => {
 
         {/* kanan */}
         <div className="flex flex-col gap-1 items-center">
-          <HeaderRight undertone={undertone}/>
-          <ProductLip title="B ERL LIP MATE" products={lipMateList} />
-          <ProductLip title="B ERL LIP VELVET" products={lipVelvetList} />
-          <ProductLip title="B ERL LIP STAIN" products={lipStainList} />
+          <HeaderRight undertone={undertone} />
+          <ProductLip
+            title="B ERL LIP MATE"
+            products={lipMateList}
+            layout={lipMateList.length}
+          />
+          <ProductLip
+            title="B ERL LIP VELVET"
+            products={lipVelvetList}
+            layout={lipVelvetList.length}
+          />
+          <ProductLip
+            title="B ERL LIP STAIN"
+            products={lipStainList}
+            layout={lipStainList.length}
+          />
         </div>
       </div>
 

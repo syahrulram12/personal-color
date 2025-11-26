@@ -15,15 +15,15 @@ const Page = () => {
   return (
     <div className="relative min-h-screen bg-main flex items-center justify-center text-center">
       <div className="flex flex-col items-center justify-center gap-6 px-6 py-5">
-        <Heading size="lg"/>
+        <Heading size="lg" />
 
-        <h1 className="text-berl font-bold text-4xl md:text-3xl leading-tight">
+        <h1 className="text-berl font-bold text-1xl md:text-3xl leading-tight">
           POSISIKAN WAJAH TEPAT DI TENGAH
           <br /> POSISI KAMERA
         </h1>
 
-        <div className="flex flex-col justify-center items-center text-center px-6 py-8 bg-component rounded-md">
-          <div className="flex justify-center items-center text-center pt-4 gap-4 flex-wrap text-white font-bold">
+        <div className="grid md:grid-cols-2">
+          <div className="hidden md:flex flex-col justify-center items-center text-center pt-4 gap-4 flex-wrap text-white font-bold">
             {dataCard.map((item, index) => (
               <CardHint
                 key={index}
@@ -32,10 +32,10 @@ const Page = () => {
               />
             ))}
           </div>
-
-          <Image src={HomeHint} alt="hint-camera" width={300} height={200} />
+          <div className="bg-component rounded-4xl p-16">
+            <Image src={HomeHint} alt="hint-camera" width={300} height={200} />
+          </div>
         </div>
-
         <div className="flex gap-3">
           <Link href="/">
             <Button className="berl-btn-2 mt-4 w-40">Back</Button>
