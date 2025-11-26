@@ -7,13 +7,13 @@ export async function POST(req: Request) {
   try {
     const body = await req.json();
 
-    const { name, email, message } = body;
+    const { name, email, message, url } = body;
 
     const { data, error } = await resend.emails.send({
       from: "BERL Beauty <insan@bustech.site>",
       to: [email],
       subject: "BERL BEAUTY - Rekomendasi Produk Untuk Kamu",
-      react: EmailTemplate({ name: name, message: message }),
+      react: EmailTemplate({ name: name, message: message, url: url }),
       text: `Halo ${name}, ini rekomendasi produk untuk kamu...`,
     });
 
