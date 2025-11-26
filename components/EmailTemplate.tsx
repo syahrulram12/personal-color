@@ -22,7 +22,7 @@ interface EmailTemplateProps {
 }
 
 const baseUrl = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
+  ? `${process.env.VERCEL_URL}`
   : "http://localhost:3000";
 
 export const EmailTemplate = ({ name, message, url }: EmailTemplateProps) => (
