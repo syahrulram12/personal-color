@@ -62,6 +62,27 @@ const ContactForm = () => {
     };
 
     setLoading(true);
+    const dataEmail = {
+      name: contact?.name,
+      message: "insan ganteng",
+    };
+
+    try {
+      const sendEmail = await fetch("/api/send", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: contact?.name,
+          email: contact?.email,
+          message: "insan ganteng",
+        }),
+      });
+
+      const resEmail = await sendEmail.json();
+      console.log("EMAIL RESULT:", resEmail);
+    } catch (error) {
+      console.error("FETCH EMAIL ERROR:", error);
+    }
 
     try {
       const res = await fetch("/api/personalcolor", {
