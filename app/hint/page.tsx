@@ -6,9 +6,9 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
 const dataCard = [
-  { judul: "LIGHTNING CHECK", subJudul: "GOOD" },
-  { judul: "LOOK STRAIGHT", subJudul: "GOOD" },
-  { judul: "POSITION FACE", subJudul: "GOOD" },
+  { judul: "CEK PENCAHAYAAN" },
+  { judul: "PANDANGAN LURUS" },
+  { judul: "POSISI WAJAH" },
 ];
 
 const Page = () => {
@@ -25,11 +25,7 @@ const Page = () => {
         <div className="grid md:grid-cols-2">
           <div className="hidden md:flex flex-col justify-center items-center text-center pt-4 gap-4 flex-wrap text-white font-bold">
             {dataCard.map((item, index) => (
-              <CardHint
-                key={index}
-                judul={item.judul}
-                subJudul={item.subJudul}
-              />
+              <CardHint key={index} judul={item.judul} />
             ))}
           </div>
           <div className="bg-component rounded-4xl p-16">

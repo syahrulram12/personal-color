@@ -3,8 +3,14 @@
 import { useState } from "react";
 import { Button } from "../ui/button";
 import Heading from "../ui/Heading";
-import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "../ui/dialog";
-
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "../ui/dialog";
 
 const Home = () => {
   const [open, setOpen] = useState(false);
@@ -45,12 +51,12 @@ const Home = () => {
 
       <h1 className="text-[#4A2E1F] font-bold text-4xl md:text-5xl leading-tight mb-4">
         Temukan <br />
-        Warna Pribadimu
+        Warna Terbaikmu
       </h1>
 
       <p className="text-[#4A2E1F]/90 text-base md:text-lg max-w-md font-bold mb-12">
-        Kenali warna pribadi kamu untuk menemukan <br />
-        warna-warna yang paling cocok untukmu!
+        Kenali personal color yang merefleksikan dirimu dan<br />
+        pilih shade yang paling sempurna untukmu!
       </p>
 
       <div className="flex flex-col gap-6 w-full h-auto max-w-xs">
@@ -67,7 +73,8 @@ const Home = () => {
               Aktifkan Lokasi
             </DialogTitle>
             <DialogDescription>
-              Kami membutuhkan akses lokasi untuk memberikan rekomendasi warna yang sesuai.
+              Kami membutuhkan akses lokasi untuk memberikan rekomendasi warna
+              yang sesuai.
             </DialogDescription>
           </DialogHeader>
 

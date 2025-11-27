@@ -1,4 +1,3 @@
-
 import Undertone from "@/components/SelectTone/SelectToneComponent";
 import { getTone } from "@/lib/selectTone/getTone";
 
@@ -15,8 +14,8 @@ const Page = async () => {
       paletteImages={paletteImages}
       urlBack="/undertone-1"
       urlNext="/undertone-3"
-      judulTone="Check your undertone 2/3"
-      description="Pilih warna yang membuat kulit Anda lebih cerah dan melembutkan warna di sekitar kantung mata & garis senyum Anda"
+      judulTone="Check undertone kamu 2/3"
+      description="pilih warna yang membuat kulit anda tampak cerah terutama pada bagian bawah mata dan area bibir / smile line"
     />
   );
 };

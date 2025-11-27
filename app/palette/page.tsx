@@ -15,8 +15,8 @@ const Page = async () => {
       paletteImages={paletteImages}
       urlBack="/hint"
       urlNext="/undertone-1"
-      judulTone="Check your undertone 1/3"
-      description="Mohon identifikasikan dengan pencahayaan yang terang"
+      judulTone="Check undertone kamu 1/3"
+      description="mohon identifikasi warna yang paling mendekati dengan kulit anda."
     />
   );
 };

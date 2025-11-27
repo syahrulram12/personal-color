@@ -14,8 +14,8 @@ const Page = async () => {
       paletteImages={paletteImages}
       urlBack="/undertone-2"
       urlNext="/result"
-      judulTone="Check your undertone 3/3"
-      description="Pilih warna yang membuat kulit Anda lebih cerah dan melembutkan warna di sekitar kantung mata & garis senyum Anda"
+      judulTone="Check undertone kamu 3/3"
+      description="pilih warna yang membuat kulit anda tampak cerah terutama pada bagian bawah mata dan area bibir / smile line"
     />
   );
 };

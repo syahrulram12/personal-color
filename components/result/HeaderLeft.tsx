@@ -25,18 +25,17 @@ const HeaderLeft = () => {
   }, []);
 
   return (
-    <div className="md:w-[30vw]">
-      <div className=" bg-card-component shadow-lg flex flex-col p-8 rounded-4xl">
-        <div className="flex justify-between gap-4 w-full md:w-auto">
-          <SparklesText className="text-berl font-bold font-tangerine text-5xl md:text-7xl tracking-wide">
-            Personal Color
-          </SparklesText>
-          <Heading size="lg" />
-        </div>
-
-        <h1 className="text-BERL text-xl font-baloo font-semibold">
-          {userName}
+    <div className="md:min-w-[30vw]">
+      <div className=" bg-card-component md:min-h-[100px] shadow-lg flex flex-col p-8 rounded-4xl">
+        <h1 className="text-BERL text-xl font-baloo font-semibold mb-2">
+          Hi {userName} !
         </h1>
+        <div className="flex justify-between gap-4 w-full md:w-auto">
+          <SparklesText className="text-berl font-bold font-tangerine text-5xl md:text-6xl tracking-wide">
+            This is your personal color
+          </SparklesText>
+          {/* <Heading size="lg" /> */}
+        </div>
       </div>
     </div>
   );

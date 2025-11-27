@@ -44,49 +44,52 @@ const ResultComponent = async ({ trx }: { trx: string }) => {
   // console.log("DATA RESULT SERVER:", data);
 
   return (
-    <div className="bg-result min-h-screen pt-10">
-      <div className="grid md:grid-cols-2 pb-2">
-        {/* kiri */}
-        <div className="flex flex-col items-center">
-          <HeaderLeft />
+    <div className="bg-result min-h-screen p-4">
+      <div className=" flex items-center justify-center">
+        <div className="flex flex-wrap items-center justify-center">
+          {/* kiri */}
+          <div className="flex flex-col items-center">
+            <HeaderLeft />
 
-          <div className="pt-5 md:pt-[7vh] md:w-[35vw] mb-3">
-            <ColorPalette />
-          </div>
+            <div className="pt-5 md:w-[35vw] mb-3">
+              <ColorPalette />
+            </div>
 
-          <div className="md:w-[35vw] mb-4">
-            <div className="w-full md:pt-0 md:z-50 flex flex-col items-center">
-              <Cushion CushionImage={data.depth_level} />
+            <div className="md:w-[35vw] mb-4">
+              <div className="w-full md:pt-0 md:z-50 flex flex-col items-center">
+                <Cushion CushionImage={data.depth_level} />
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* kanan */}
-        <div className="flex flex-col gap-1 items-center">
-          <HeaderRight undertone={undertone} />
-          <ProductLip
-            title="B ERL LIP MATE"
-            products={lipMateList}
-            layout={lipMateList.length}
-          />
-          <ProductLip
-            title="B ERL LIP VELVET"
-            products={lipVelvetList}
-            layout={lipVelvetList.length}
-          />
-          <ProductLip
-            title="B ERL LIP STAIN"
-            products={lipStainList}
-            layout={lipStainList.length}
-          />
+          {/* kanan */}
+          <div className="flex flex-col  items-center">
+            <HeaderRight undertone={undertone} />
+            <ProductLip
+              title="B ERL LIP MATE"
+              products={lipMateList}
+              layout={lipMateList.length}
+            />
+            <ProductLip
+              title="B ERL LIP VELVET"
+              products={lipVelvetList}
+              layout={lipVelvetList.length}
+            />
+            <ProductLip
+              title="B ERL LIP STAIN"
+              products={lipStainList}
+              layout={lipStainList.length}
+            />
+          </div>
         </div>
       </div>
-
-      <div className="mt-5 flex gap-3 items-center justify-center py-5">
+      <div className=" mt-5 flex gap-3 items-center justify-center py-5">
         <Link href="/">
           <Button className="berl-btn">Finish</Button>
         </Link>
-        <Button className="berl-btn">Mitra Terdekat</Button>
+        <Button className="cursor-pointer h-auto flex flex-col bg-[#4A2E1F] text-white font-bold text-lg rounded-full shadow-[0_4px_10px_rgba(0,0,0,0.25)]">
+          Mitra Terdekat
+        </Button>
       </div>
     </div>
   );

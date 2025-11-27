@@ -9,7 +9,11 @@ interface PageProps {
 const Page = async ({ params }: PageProps) => {
   const { trx } = await params;
 
-  return <ResultComponent trx={trx} />;
+  return (
+    <div>
+      <ResultComponent trx={trx} />
+    </div>
+  );
 };
 
 export default Page;
