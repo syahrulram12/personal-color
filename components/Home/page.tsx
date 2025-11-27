@@ -11,6 +11,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "../ui/dialog";
+import { Loader2, MapPin } from "lucide-react";
 
 const Home = () => {
   const [open, setOpen] = useState(false);
@@ -49,42 +50,69 @@ const Home = () => {
         <Heading size="md" />
       </div>
 
-      <h1 className="text-[#4A2E1F] font-bold text-4xl md:text-5xl leading-tight mb-4">
+      {/* Title */}
+      <h1 className="font-baloo text-[#4A2E1F] font-bold text-3xl sm:text-4xl md:text-5xl leading-tight mb-4 mt-2">
         Temukan <br />
         Warna Terbaikmu
       </h1>
 
-      <p className="text-[#4A2E1F]/90 text-base md:text-lg max-w-md font-bold mb-12">
-        Kenali personal color yang merefleksikan dirimu dan<br />
+      {/* Description */}
+      <p className="font-baloo text-[#4A2E1F]/90 text-sm sm:text-base md:text-lg max-w-sm md:max-w-md font-bold mb-10 leading-relaxed">
+        Kenali personal color yang merefleksikan dirimu dan
+        <br className="hidden sm:block" />
         pilih shade yang paling sempurna untukmu!
       </p>
 
-      <div className="flex flex-col gap-6 w-full h-auto max-w-xs">
-        <Button className="berl-btn" onClick={() => setOpen(true)}>
+      {/* Button container */}
+      <div className="flex flex-col gap-4 w-full max-w-[200px]">
+        <Button
+          className="berl-btn w-full py-3 text-base sm:text-lg"
+          onClick={() => setOpen(true)}
+        >
           Mulai
         </Button>
       </div>
 
       {/* Modal Akses Lokasi */}
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="text-center">
-          <DialogHeader>
-            <DialogTitle className="text-xl font-bold">
+        <DialogContent
+          className="bg-card-component2 w-[90%] max-w-md rounded-2xl shadow-xl text-center p-6 md:p-8 font-baloo
+    "
+        >
+          <DialogHeader className="space-y-3">
+            <DialogTitle className="text-xl md:text-2xl font-bold flex items-center justify-center gap-2">
+              <MapPin className="w-6 h-6 text-berl" />
               Aktifkan Lokasi
             </DialogTitle>
-            <DialogDescription>
+
+            <DialogDescription className="text-sm text-start text-black leading-relaxed ">
               Kami membutuhkan akses lokasi untuk memberikan rekomendasi warna
-              yang sesuai.
+              yang lebih akurat sesuai kondisi pencahayaan di sekitar Anda.
             </DialogDescription>
           </DialogHeader>
 
-          <DialogFooter className="flex justify-center gap-4 mt-6">
-            <Button variant="outline" onClick={() => setOpen(false)}>
+          <DialogFooter className="mt-3 flex flex-col md:flex-row justify-center gap-3">
+            <Button
+              variant="outline"
+              className="w-full md:w-32"
+              onClick={() => setOpen(false)}
+            >
               Batal
             </Button>
 
-            <Button onClick={handleAllow} disabled={loading}>
-              {loading ? "Mengambil lokasi..." : "Izinkan"}
+            <Button
+              className="w-full md:w-40"
+              onClick={handleAllow}
+              disabled={loading}
+            >
+              {loading ? (
+                <span className="flex items-center justify-center gap-2">
+                  <Loader2 className="w-4 h-4 animate-spin" />
+                  Mengambil lokasi...
+                </span>
+              ) : (
+                "Izinkan"
+              )}
             </Button>
           </DialogFooter>
         </DialogContent>
