@@ -71,21 +71,42 @@ const HintComponent = () => {
 
       {/* MODAL */}
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="max-w-md text-center rounded-2xl shadow-2xl bg-card-component2  font-baloo">
-          <DialogHeader>
-            <DialogTitle className="text-xl font-bold text-berl">
+        <DialogContent
+          className="
+      w-[90%] 
+      max-w-md 
+      rounded-2xl 
+      shadow-2xl 
+      bg-card-component2 
+      font-baloo 
+      p-6 
+      md:p-8
+      text-berl
+    "
+        >
+          <DialogHeader className="space-y-2">
+            <DialogTitle className="text-xl md:text-2xl font-bold text-berl text-center">
               Sebelum Melanjutkan
             </DialogTitle>
-            <DialogDescription className="text-berl mt-2 leading-relaxed">
+
+            <DialogDescription
+              className="
+          mt-1 
+          text-sm md:text-base 
+          leading-relaxed 
+          text-berl 
+          text-justify
+        "
+            >
               Untuk memastikan hasil analisis warna yang lebih akurat, kami
               memerlukan:
               <br />
               <br />• Akses <b>kamera</b> untuk mengambil gambar wajah Anda.
               {/* <br />• Akses <b>lokasi</b> untuk menyesuaikan pencahayaan
-              berdasarkan area. */}
+        berdasarkan area. */}
               <br />
               <br />
-              <span className="font-semibold text-xl text-berl">
+              <span className="font-semibold text-lg md:text-xl text-berl">
                 Penting untuk diketahui:
               </span>
               <br />
@@ -98,25 +119,26 @@ const HintComponent = () => {
               <br />
               Dengan melanjutkan, Anda menyetujui{" "}
               <Link
-                className="text-berl font-bold"
+                className="text-berl font-bold underline underline-offset-2"
                 href="https://berlcosmetics.com/privacy-policy/"
+                target="_blank"
               >
-                Privacy Policy{" "}
-              </Link>
+                Privacy Policy
+              </Link>{" "}
               dan penggunaan data ini secara aman.
             </DialogDescription>
           </DialogHeader>
 
-          <DialogFooter className="mt-6 flex justify-center gap-3">
+          <DialogFooter className="mt-6 flex flex-col md:flex-row justify-center gap-3">
             <Button
               variant="outline"
-              className="w-32"
+              className="w-full md:w-32"
               onClick={() => setOpen(false)}
             >
               Batal
             </Button>
 
-            <Button className=" w-40" onClick={handleAgree}>
+            <Button className="w-full md:w-40" onClick={handleAgree}>
               Setujui & Lanjut
             </Button>
           </DialogFooter>
