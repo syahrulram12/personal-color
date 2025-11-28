@@ -39,9 +39,9 @@ const HintComponent = () => {
       <div className="flex flex-col items-center justify-center gap-6 px-6 py-5">
         {/* <Heading size="lg" /> */}
 
-        <h1 className="text-berl font-bold text-1xl md:text-3xl leading-tight">
-          POSISIKAN WAJAH TEPAT DI TENGAH
-          <br /> POSISI KAMERA
+        <h1 className="uppercase text-berl font-bold text-1xl md:text-3xl leading-tight">
+          Pastikan wajah berada di tengah tampilan kamera dan <br /> diambilkan
+          dengan pencahayaan yang terang
         </h1>
 
         <div className="bg-component rounded-4xl px-16 py-12 shadow-lg">
