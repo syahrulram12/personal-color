@@ -15,6 +15,7 @@ const ResultComponent = async ({ trx }: { trx: string }) => {
   const data = await res.json();
   const dataUndertone = data.undertone;
 
+  console.log("hasil data:", data)
   // console.log("data undertone :", dataUndertone);
 
   const lipData = dataUndertone;
@@ -52,7 +53,7 @@ const ResultComponent = async ({ trx }: { trx: string }) => {
             <HeaderLeft />
 
             <div className="pt-5 md:w-[35vw] mb-3">
-              <ColorPalette />
+              <ColorPalette colors={data?.color_pallete ?? []} />
             </div>
 
             <div className="md:w-[35vw] mb-4">
