@@ -15,7 +15,7 @@ const ResultComponent = async ({ trx }: { trx: string }) => {
   const data = await res.json();
   const dataUndertone = data.undertone;
 
-  console.log("hasil data:", data)
+  // console.log("hasil data:", data);
   // console.log("data undertone :", dataUndertone);
 
   const lipData = dataUndertone;

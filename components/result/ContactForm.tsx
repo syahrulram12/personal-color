@@ -81,22 +81,22 @@ const ContactForm = () => {
       });
 
       const result = await res.json();
-      console.log("Response API:", result);
+      // console.log("Response API:", result);
 
       if (result.success && result.trx) {
-        const sendEmail = await fetch("/api/send", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            name: contact?.name,
-            email: contact?.email,
-            message: "insan ganteng",
-            url: `https://berl-beauty.vercel.app/result/${result.trx}`,
-          }),
-        });
+        // const sendEmail = await fetch("/api/send", {
+        //   method: "POST",
+        //   headers: { "Content-Type": "application/json" },
+        //   body: JSON.stringify({
+        //     name: contact?.name,
+        //     email: contact?.email,
+        //     message: "insan ganteng",
+        //     url: `https://berl-beauty.vercel.app/result/${result.trx}`,
+        //   }),
+        // });
 
-        const resEmail = await sendEmail.json();
-        console.log("EMAIL RESULT:", resEmail);
+        // const resEmail = await sendEmail.json();
+        // console.log("EMAIL RESULT:", resEmail);
 
         setSuccess(true);
 
@@ -124,6 +124,20 @@ const ContactForm = () => {
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
             <FormField
               control={form.control}
+              name="nohp"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>No HP</FormLabel>
+                  <FormControl>
+                    <Input placeholder="08xxxxxx" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
               name="name"
               render={({ field }) => (
                 <FormItem>
@@ -144,20 +158,6 @@ const ContactForm = () => {
                   <FormLabel>Email</FormLabel>
                   <FormControl>
                     <Input placeholder="email@example.com" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="nohp"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>No HP</FormLabel>
-                  <FormControl>
-                    <Input placeholder="08xxxxxx" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
