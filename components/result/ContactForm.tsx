@@ -101,7 +101,7 @@ const ContactForm = () => {
         setSuccess(true);
 
         setTimeout(() => {
-          setLoading(false);
+          // setLoading(false);
           removeCookie("selectedColorUnderTone");
           // removeCookie("selectedColorSkinTone");
           router.push(`/result/${result.trx}`);

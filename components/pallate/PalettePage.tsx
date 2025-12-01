@@ -43,6 +43,10 @@ const PalettePage = ({
     paletteImages?.[0] ?? ""
   );
 
+  const [isLoadingPreview, setIsLoadingPreview] = useState(false);
+  const [isButtonNextLoading, setIsButtonNextLoading] = useState(false);
+  const [isButtonBackLoading, setIsButtonBackLoading] = useState(false);
+
   const paletteColors = useMemo(
     () =>
       paletteImages.map((img) => ({
@@ -54,6 +58,7 @@ const PalettePage = ({
 
   const handleSelect = useCallback(
     (img: string) => {
+      setIsLoadingPreview(true);
       setSelectedPalette(img);
       const color = getColorFromFilename(img);
       onNext?.(color);
@@ -85,6 +90,8 @@ const PalettePage = ({
         <div className="md:hidden w-full h-full">
           <div className="flex flex-col items-center">
             <CardPreview
+              isLoading={isLoadingPreview}
+              onLoaded={() => setIsLoadingPreview(false)}
               capturedImg={capturedImg}
               selectedPalette={selectedPalette}
             />
@@ -109,13 +116,33 @@ const PalettePage = ({
 
             <div className="flex gap-3">
               <Link href={urlBack} className="mt-4">
-                <button className="mt-8 cursor-pointer w-[100px] bg-[#7C2C2C] text-white py-3 rounded-full font-bold shadow-md hover:opacity-90 transition">
-                  Back
+                <button
+                  onClick={() => setIsButtonBackLoading(true)}
+                  className="mt-8 cursor-pointer w-[100px] bg-[#7C2C2C] text-white py-3 rounded-full font-bold shadow-md hover:opacity-90 transition flex items-center justify-center gap-2"
+                  disabled={isButtonBackLoading}
+                >
+                  {isButtonBackLoading ? (
+                    <div className="w-5 h-5 border-4 border-white border-t-transparent rounded-full animate-spin" />
+                  ) : (
+                    "Back"
+                  )}
                 </button>
               </Link>
-              <Link href={nextTone} className="mt-4" onClick={persistColor}>
-                <button className="mt-8 cursor-pointer w-[100px] bg-[#7C2C2C] text-white py-3 rounded-full font-bold shadow-md hover:opacity-90 transition">
-                  Next
+
+              <Link href={nextTone} className="mt-4">
+                <button
+                  onClick={() => {
+                    setIsButtonNextLoading(true);
+                    persistColor();
+                  }}
+                  className="mt-8 cursor-pointer w-[100px] bg-[#7C2C2C] text-white py-3 rounded-full font-bold shadow-md hover:opacity-90 transition flex items-center justify-center gap-2"
+                  disabled={isButtonNextLoading}
+                >
+                  {isButtonNextLoading ? (
+                    <div className="w-5 h-5 border-4 border-white border-t-transparent rounded-full animate-spin" />
+                  ) : (
+                    "Next"
+                  )}
                 </button>
               </Link>
             </div>
@@ -154,13 +181,33 @@ const PalettePage = ({
 
           <div className="flex gap-3">
             <Link href={urlBack} className="mt-4">
-              <button className="mt-8 cursor-pointer w-[100px] bg-[#7C2C2C] text-white py-3 rounded-full font-bold shadow-md hover:opacity-90 transition">
-                Back
+              <button
+                onClick={() => setIsButtonBackLoading(true)}
+                className="mt-8 cursor-pointer w-[100px] bg-[#7C2C2C] text-white py-3 rounded-full font-bold shadow-md hover:opacity-90 transition flex items-center justify-center gap-2"
+                disabled={isButtonBackLoading}
+              >
+                {isButtonBackLoading ? (
+                  <div className="w-5 h-5 border-4 border-white border-t-transparent rounded-full animate-spin" />
+                ) : (
+                  "Back"
+                )}
               </button>
             </Link>
-            <Link href={nextTone} className="mt-4" onClick={persistColor}>
-              <button className="mt-8 cursor-pointer w-[100px] bg-[#7C2C2C] text-white py-3 rounded-full font-bold shadow-md hover:opacity-90 transition">
-                Next
+
+            <Link href={nextTone} className="mt-4">
+              <button
+                onClick={() => {
+                  setIsButtonNextLoading(true);
+                  persistColor();
+                }}
+                className="mt-8 cursor-pointer w-[100px] bg-[#7C2C2C] text-white py-3 rounded-full font-bold shadow-md hover:opacity-90 transition flex items-center justify-center gap-2"
+                disabled={isButtonNextLoading}
+              >
+                {isButtonNextLoading ? (
+                  <div className="w-5 h-5 border-4 border-white border-t-transparent rounded-full animate-spin" />
+                ) : (
+                  "Next"
+                )}
               </button>
             </Link>
           </div>
@@ -169,6 +216,8 @@ const PalettePage = ({
         {/* card preview dekstop */}
         <div className="hidden md:flex min-h-[40vh] w-[250px] xl:w-full justify-center">
           <CardPreview
+            isLoading={isLoadingPreview}
+            onLoaded={() => setIsLoadingPreview(false)}
             capturedImg={capturedImg}
             selectedPalette={selectedPalette}
           />

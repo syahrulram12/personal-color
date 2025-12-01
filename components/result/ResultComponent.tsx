@@ -88,9 +88,11 @@ const ResultComponent = async ({ trx }: { trx: string }) => {
         <Link href="/">
           <Button className="berl-btn">Finish</Button>
         </Link>
-        <Button className="cursor-pointer h-auto flex flex-col bg-[#4A2E1F] text-white font-bold text-lg rounded-full shadow-[0_4px_10px_rgba(0,0,0,0.25)]">
-          Mitra Terdekat
-        </Button>
+        <Link href="https://ecommerce.berlstore.com/maps" target="_blank">
+          <Button className="cursor-pointer h-auto flex flex-col bg-[#4A2E1F] text-white font-bold text-lg rounded-full shadow-[0_4px_10px_rgba(0,0,0,0.25)]">
+            Mitra Terdekat
+          </Button>
+        </Link>
       </div>
     </div>
   );
