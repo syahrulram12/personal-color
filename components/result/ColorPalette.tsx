@@ -23,7 +23,7 @@ const ColorPalette = ({ colors = [] }: { colors?: any[] }) => {
         <h1 className="">Color Palette</h1>
       </div>
 
-      <div className="relative w-[90vw] md:w-[20vw]">
+      <div className="relative w-[90vw] md:w-[30vw]">
         <div className="bg-berl-2 rounded-full shadow-[0_4px_20px_rgba(0,0,0,0.08)] flex items-center px-18 py-4 relative">
           {/* SCROLL AREA */}
           <div

@@ -100,7 +100,7 @@ export const EmailTemplate = ({ name, message, url }: EmailTemplateProps) => (
 
               <li>
                 <Text className="text-[15px] text-[#3c3f44] leading-[22px]">
-                  ⭐ <strong>Lip Mate</strong> – Warna cantik, tahan lama, dan
+                  ⭐ <strong>Lip Matte</strong> – Warna cantik, tahan lama, dan
                   tidak membuat bibir kering.
                 </Text>
               </li>

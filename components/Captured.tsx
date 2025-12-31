@@ -65,9 +65,9 @@ const Captured = () => {
     ctx?.drawImage(video, 0, 0, canvas.width, canvas.height);
 
     const imgData = canvas.toDataURL("image/png");
-    localStorage.setItem("captured-image", imgData);
     setCapturedImg(imgData);
 
+    localStorage.setItem("captured-image", imgData);
     window.dispatchEvent(new Event("captured-image-updated"));
 
     setMode("preview");

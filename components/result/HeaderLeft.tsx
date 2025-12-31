@@ -25,8 +25,8 @@ const HeaderLeft = () => {
   }, []);
 
   return (
-    <div className="md:min-w-[30vw]">
-      <div className=" bg-card-component md:min-h-[100px] shadow-lg flex flex-col p-8 rounded-4xl">
+    <div className="w-full">
+      <div className="bg-card-component md:min-h-[100px] shadow-lg flex flex-col p-8 rounded-4xl items-center">
         <h1 className="text-BERL text-xl font-baloo font-semibold mb-2">
           Hi {userName} !
         </h1>

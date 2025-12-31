@@ -25,7 +25,7 @@ const CardPreview = ({
             onLoad={onLoaded}
             alt="Captured"
             fill
-            className="object-cover"
+            className="object-cover scale-x-[-1]"
           />
         )}
 

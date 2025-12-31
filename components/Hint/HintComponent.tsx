@@ -40,8 +40,14 @@ const HintComponent = () => {
         {/* <Heading size="lg" /> */}
 
         <h1 className="uppercase text-berl font-bold text-1xl md:text-2xl leading-tight">
-          Pastikan posisi wajah berada di tengah tampilan kamera dan <br /> ambil gambar dengan pencahayaan yang baik
+          Pastikan posisi wajah berada di tengah tampilan kamera dan <br />{" "}
+          ambil gambar dengan pencahayaan yang baik
         </h1>
+
+        <small className="uppercase text-berl font-bold text-sm md:text-base leading-tight">
+          Untuk hasil yang lebih maksimal <br/>silahkan ambil foto dengan
+          kondisi bareface tanpa makeup
+        </small>
 
         <div className="bg-component rounded-4xl px-16 py-12 shadow-lg">
           <Image src={HomeHint} alt="hint-camera" width={300} height={200} />
