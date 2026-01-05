@@ -11,7 +11,7 @@ export async function getTone({
   endpoint: string;
 }): Promise<DepthLevelItem[]> {
   const res = await fetch(
-    `https://market.berlstore.com/api/personalcolor/${endpoint}`,
+    `http://localhost:9092/api/personalcolor/${endpoint}`,
     { cache: "no-store" }
   );
 

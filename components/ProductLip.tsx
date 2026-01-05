@@ -15,7 +15,7 @@ const ProductLip = ({
       <div className="p-3 font-bold text-white berl-btn text-center rounded-lg">
         <h1 className="font-baloo text-md">{title}</h1>
       </div>
-      <div className="w-10/12 bg-card-component shadow-lg mt-5 p-3 rounded-lg flex flex-col items-center justify-center mx-auto">
+      <div className="w-10/12 bg-card-component shadow mt-5 p-3 rounded-lg flex flex-col items-center justify-center mx-auto">
         <CarouselLips images={products} layout={layout} />
       </div>
     </>

@@ -6,6 +6,7 @@ import HeaderRight from "./headerRight";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import EyeBrow from "../EyeBrow";
+import FacePallatte from "../FacePallatte";
 
 const reorderProducts = (
   products: Array<{ product: string; image: string }>
@@ -26,7 +27,7 @@ const reorderProducts = (
 
 const ResultComponent = async ({ trx }: { trx: string }) => {
   const res = await fetch(
-    `https://market.berlstore.com/api/personalcolor/resulttrx?trx=${trx}`,
+    `http://localhost:9092/api/personalcolor/resulttrx?trx=${trx}`,
     { cache: "no-store" }
   );
 
@@ -44,7 +45,8 @@ const ResultComponent = async ({ trx }: { trx: string }) => {
 
   const lipData = dataUndertone;
 
-  const undertone = lipData?.["Lip Mate"]?.[0]?.undertone_result_id ?? null;
+  const personalColor = data.personal_color;
+  const description = data.description;
 
   const lipMateList =
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -70,7 +72,11 @@ const ResultComponent = async ({ trx }: { trx: string }) => {
       src: item.imagevarian,
     })) ?? [];
 
-  console.log(eyeBrowList);
+  const facePalatte =
+    lipData?.["Face Palatte"]?.map((item: any) => ({
+      src: item.imagevarian,
+    })) ?? [];
+
   // console.log("DATA RESULT SERVER:", data);
 
   return (
@@ -80,7 +86,10 @@ const ResultComponent = async ({ trx }: { trx: string }) => {
           <HeaderLeft />
         </div>
         <div className="flex flex-col items-center">
-          <HeaderRight undertone={undertone} />
+          <HeaderRight
+            personalColor={personalColor}
+            description={description}
+          />
         </div>
         {/* kiri */}
         <div className="flex flex-col items-center w-full gap-3">
@@ -97,7 +106,7 @@ const ResultComponent = async ({ trx }: { trx: string }) => {
 
         <div className="flex flex-col gap-3">
           <EyeBrow
-            title="EYE BROW"
+            title="B erl Eye Fella Kabuki Brow Styler"
             products={eyeBrowList}
             layout={eyeBrowList.length}
           />
@@ -106,20 +115,24 @@ const ResultComponent = async ({ trx }: { trx: string }) => {
         {/* kanan */}
         <div className="flex flex-col gap-3">
           <ProductLip
-            title="B ERL LIP MATTE"
+            title="B erl Beauty Lip Matte Cream "
             products={lipMateList}
             layout={lipMateList.length}
           />
           <ProductLip
-            title="B ERL LIP VELVET"
+            title="B erl La Belle Colorstay Lip Velvet"
             products={lipVelvetList}
             layout={lipVelvetList.length}
           />
           <ProductLip
-            title="B ERL LIP STAIN"
+            title="B erl Glass On Lip Stain"
             products={lipStainList}
             layout={lipStainList.length}
           />
+        </div>
+
+        <div className="flex flex-col gap-3">
+          <FacePallatte image={facePalatte[0].src ?? ""}></FacePallatte>
         </div>
         <div className=" mt-5 flex flex-col gap-3 items-center justify-center py-5">
           <Link href="/" className="w-full ">

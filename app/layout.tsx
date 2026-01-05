@@ -42,7 +42,7 @@ const RubikDirt = Rubik_Dirt({
 });
 
 export const metadata: Metadata = {
-  title: "B erl Cosmtics - Beautiful | Confident | You",
+  title: "B erl Cosmetics - Beautiful | Confident | You",
   description: "B erl Personal Color",
   icons: {
     icon: "/favicon.ico"

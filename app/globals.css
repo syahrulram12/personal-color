@@ -80,12 +80,12 @@
 
 /* hide scrollbar */
 .scrollbar-hide::-webkit-scrollbar {
-  display: none;
+  display: none ;
 }
 
 .scrollbar-hide {
   -ms-overflow-style: none; /* IE */
-  scrollbar-width: none; /* Firefox */
+  scrollbar-width: none !important; /* Firefox */
 }
 
 .font-tangerine {

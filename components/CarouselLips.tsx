@@ -22,9 +22,9 @@ const CarouselLips = ({ images, layout }: CarouselProps) => {
         {images.map((item, index) => (
           <CarouselItem
             key={index}
-            className={`basis-1/2 sm:basis-1/2 lg:basis-1/${layout}`}
+            className={`sm:basis-1/2 lg:basis-1/${layout}`}
           >
-            <div className="p-3 flex justify-center">
+            <div className="flex justify-center">
               <div className="w-full flex justify-center items-center">
                 <Image
                   src={item.src}

@@ -118,7 +118,7 @@ const HintComponent = () => {
               Dengan melanjutkan, Anda menyetujui{" "}
               <Link
                 className="text-berl font-bold underline underline-offset-2"
-                href="https://berlcosmetics.com/privacy-policy/"
+                href="https://berlCosmetics.com/privacy-policy/"
                 target="_blank"
               >
                 Privacy Policy
