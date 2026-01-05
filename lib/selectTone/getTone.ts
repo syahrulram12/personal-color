@@ -5,15 +5,16 @@ interface DepthLevelItem {
   id_encrypt: string;
 }
 
+const apiUrl = process.env.API_URL;
+
 export async function getTone({
   endpoint,
 }: {
   endpoint: string;
 }): Promise<DepthLevelItem[]> {
-  const res = await fetch(
-    `http://localhost:9092/api/personalcolor/${endpoint}`,
-    { cache: "no-store" }
-  );
+  const res = await fetch(`${apiUrl}/api/personalcolor/${endpoint}`, {
+    cache: "no-store",
+  });
 
   if (!res.ok) throw new Error("Failed to fetch depth level");
 
