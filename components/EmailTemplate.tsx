@@ -121,7 +121,7 @@ export const EmailTemplate = ({ name, message, url }: EmailTemplateProps) => (
 
             <Section className="mt-6">
               <Link
-                href="https://berlcosmetics.com"
+                href="https://berlCosmetics.com"
                 className="bg-[#0095ff] hover:bg-[#007ad1] transition-colors border border-[#0077cc] text-white py-[14px] px-[20px] rounded text-[17px] font-medium inline-block"
               >
                 Lihat Semua Produk →

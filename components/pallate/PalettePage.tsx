@@ -33,11 +33,12 @@ const PalettePage = ({
   pageIndex,
   onNext,
 }: PalettePageProps) => {
-  const [capturedImg] = useState(() =>
-    typeof window !== "undefined"
-      ? localStorage.getItem("captured-image")
-      : null
-  );
+  const [capturedImg, setCapturedImg] = useState<string | null>(null);
+
+  useEffect(() => {
+    const captured = localStorage.getItem("captured-image");
+    setCapturedImg(captured);
+  }, []);
 
   const [selectedPalette, setSelectedPalette] = useState<string>(
     paletteImages?.[0] ?? ""
@@ -58,7 +59,7 @@ const PalettePage = ({
 
   const handleSelect = useCallback(
     (img: string) => {
-      setIsLoadingPreview(true);
+      // setIsLoadingPreview(true);
       setSelectedPalette(img);
       const color = getColorFromFilename(img);
       onNext?.(color);

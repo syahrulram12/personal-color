@@ -5,7 +5,7 @@ export async function POST(req: Request) {
     const body = await req.json();
 
     console.log(body);
-    const res = await fetch("https://market.berlstore.com/api/personalcolor/result", {
+    const res = await fetch("http://localhost:9092/api/personalcolor/result", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

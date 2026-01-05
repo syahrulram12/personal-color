@@ -31,7 +31,7 @@ const HeaderLeft = () => {
           Hi {userName} !
         </h1>
         <div className="flex justify-between gap-4 w-full md:w-auto">
-          <SparklesText className="text-berl font-bold font-tangerine text-5xl md:text-6xl tracking-wide">
+          <SparklesText className="text-berl font-bold font-tangerine text-4xl sm:text-5xl md:text-6xl tracking-wide">
             This is your personal color
           </SparklesText>
           {/* <Heading size="lg" /> */}
