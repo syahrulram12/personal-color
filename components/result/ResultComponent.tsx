@@ -8,6 +8,8 @@ import Link from "next/link";
 import EyeBrow from "../EyeBrow";
 import FacePallatte from "../FacePallatte";
 
+const apiUrl = process.env.API_URL;
+
 const reorderProducts = (
   products: Array<{ product: string; image: string }>
 ) => {
@@ -26,10 +28,9 @@ const reorderProducts = (
 };
 
 const ResultComponent = async ({ trx }: { trx: string }) => {
-  const res = await fetch(
-    `http://localhost:9092/api/personalcolor/resulttrx?trx=${trx}`,
-    { cache: "no-store" }
-  );
+  const res = await fetch(`${apiUrl}/api/personalcolor/resulttrx?trx=${trx}`, {
+    cache: "no-store",
+  });
 
   // const res = await fetch(
   //   `http://localhost:9022/api/personalcolor/resulttrx?trx=${trx}`,
