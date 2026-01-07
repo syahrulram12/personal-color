@@ -45,7 +45,7 @@ const Home = () => {
   };
 
   return (
-    <div className="h-screen w-full flex flex-col items-center justify-center text-center bg-utama">
+    <div className="h-screen w-full flex flex-col items-center justify-center text-center bg-utama px-5">
       <div>
         <Heading size="md" />
       </div>
