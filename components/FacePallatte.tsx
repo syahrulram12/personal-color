@@ -30,7 +30,7 @@ const FacePallatte = ({
               width={400}
               height={400}
               alt="Face Palatte"
-              className="object-cover w-5/12 md:w-11/12"
+              className="object-cover w-6/12  lg:w-11/12"
             />
           </div>
         </div>
