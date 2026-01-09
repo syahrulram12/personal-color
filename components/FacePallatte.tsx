@@ -19,7 +19,7 @@ const FacePallatte = ({
             </h1>
 
             <p className="text-left sm:text-justify text-[#7D4754] text-xs sm:text-sm font-semibold">
-              Apa pun undertone kulitmu, Berl Beauty Fella Face Palette siap
+              Apa pun undertone kulitmu, Berl Beaute Fella Face Palette siap
               digunakan untuk berbagai gaya makeup. Sesuaikan dengan mood dan
               look yang kamu inginkan hari ini.
             </p>

@@ -26,6 +26,12 @@ const Home = () => {
       return;
     }
 
+    const options = {
+      enableHighAccuracy: true,
+      timeout: 10000, // 10 detik timeout
+      maximumAge: 0
+    };
+
     navigator.geolocation.getCurrentPosition(
       (position) => {
         setLoading(false);
@@ -38,9 +44,26 @@ const Home = () => {
       },
       (error) => {
         setLoading(false);
-        alert("Gagal mendapatkan lokasi. Pastikan izin lokasi diaktifkan.");
-        console.error(error);
-      }
+        let errorMessage = "Gagal mendapatkan lokasi. ";
+        
+        switch (error.code) {
+          case error.PERMISSION_DENIED:
+            errorMessage += "Izin lokasi ditolak. Harap izinkan akses lokasi di pengaturan browser.";
+            break;
+          case error.POSITION_UNAVAILABLE:
+            errorMessage += "Informasi lokasi tidak tersedia. Coba lagi nanti.";
+            break;
+          case error.TIMEOUT:
+            errorMessage += "Waktu permintaan lokasi habis. Silakan coba lagi.";
+            break;
+          default:
+            errorMessage += "Terjadi kesalahan tidak dikenal.";
+        }
+        
+        alert(errorMessage);
+        console.error("Geolocation error:", error);
+      },
+      options
     );
   };
 
